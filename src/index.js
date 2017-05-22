@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import {createStore} from 'redux';
 import rootReducer from './reducers'
 import { Provider } from 'react-redux';
+
+// import IndexRoute from react-router
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 
 import App from './components/App';
@@ -20,6 +23,8 @@ ReactDOM.render(
     <Router history={browserHistory} >
       <Route path="/" component={App} />
       <Route path='/movies' component={MoviesPage} >
+        <IndexRoute component={MoviesAbout} />
+        <Route path="/movies/new" component={MoviesNew} />
         <Route path="/movies/:id" component={MoviesShow} />
       </Route>
     </Router>
